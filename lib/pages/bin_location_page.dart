@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:garbage_system/contstants/style.dart';
 import 'package:garbage_system/services/bin_service.dart';
 import 'package:garbage_system/widgets/app_text.dart';
-import 'package:garbage_system/widgets/normal_text.dart';
 
 class BinLocationPage extends StatefulWidget {
   const BinLocationPage({Key? key}) : super(key: key);

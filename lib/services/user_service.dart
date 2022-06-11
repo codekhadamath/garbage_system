@@ -6,18 +6,16 @@ class UserService {
   static Future<void> addUser() async {
     if (!(await isUserExist)) {
       final user = User(
-          name: AuthService.currentUser!.email!,
-          email: AuthService.currentUser!.displayName!,
+          name: AuthService.currentUser!.displayName!,
+          email: AuthService.currentUser!.email!,
           phone: 'Not Given');
       FirestoreService.usersRef.doc(AuthService.currentUser!.uid).set(user);
     }
   }
 
   static Future get isUserExist async {
-    final docs = await FirestoreService.usersRef
-        .where('email', isEqualTo: AuthService.currentUser!.email)
-        .get();
-    return docs.size > 0;
+    final docs = await FirestoreService.usersRef.doc(AuthService.currentUser!.uid).get();
+    return docs.exists;
   }
 
   static Future<User> get user async {
